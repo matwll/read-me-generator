@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("./generateMarkdown");
+const { generateMarkdown, renderLicenseBadge, renderLicenseLink } = require("./generateMarkdown");
 
 // TODO: Create an array of questions for user input
 
@@ -102,7 +102,7 @@ const writeToFile = ({
 }) =>
   `# ${name}
 
-//placeholder for license badge
+  ${renderLicenseBadge(license)}
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -134,9 +134,9 @@ ${about}
 
 This application was built primarily utilizing the following programming languages:
 
-* ${tech[0]}
-* ${tech[1]}
-* ${tech[2]}
+${tech.map( (techChoice) => {
+  return `\n* ${techChoice}`
+}).join("")}
 
 ### Installation
 
@@ -155,7 +155,7 @@ ${contribute}
 <!-- LICENSE -->
 ## License
 
-See ${license} LICENSE for more information.
+See ${renderLicenseLink(license)} LICENSE for more information.
 
 <!-- TEST -->
 ## TEST

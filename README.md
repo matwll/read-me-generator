@@ -1,6 +1,6 @@
 # READ-ME-GENERATOR
 
-//placeholder for license badge
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
 
 <!-- TABLE OF CONTENTS -->
 <details>
